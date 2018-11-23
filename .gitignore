@@ -17,6 +17,8 @@
 *.ipr
 *.properties
 
+mysql-connector-java-5.1.47.jar
+
 ### NetBeans ###
 /nbproject/private/
 /build/
