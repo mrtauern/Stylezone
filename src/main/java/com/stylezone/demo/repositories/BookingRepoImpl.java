@@ -41,8 +41,8 @@ public class BookingRepoImpl implements BookingRepo {
 
 
     @Override
-    public List<Booking> getBookings(){
-     String sql = "SELECT * FROM Booking";
+    public List<Booking> getBookings() {
+        String sql = "SELECT * FROM Booking";
         return this.template.query(sql, new ResultSetExtractor<List<Booking>>() {
 
             @Override
@@ -97,7 +97,26 @@ public class BookingRepoImpl implements BookingRepo {
 
     @Override
     public List<Holiday> getHolidays() {
-        return null;
+        String sql = "SELECT * FROM Holiday";
+        return this.template.query(sql, new ResultSetExtractor<List<Holiday>>() {
+
+            @Override
+            public List<Holiday> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                int holidayId;
+                String holidayDate, holidayName;
+                ArrayList<Holiday> holidays = new ArrayList<>();
+
+                while (rs.next()) {
+                    holidayId = rs.getInt("holidayId");
+                    holidayDate = rs.getString("holidayDate");
+                    holidayName = rs.getString("holidayName");
+
+
+                    holidays.add(new Holiday(holidayId, holidayDate, holidayName));
+                }
+                return holidays;
+            }
+        });
     }
 
     @Override
@@ -113,6 +132,28 @@ public class BookingRepoImpl implements BookingRepo {
 
     @Override
     public List<Opening> getOpenings() {
-        return null;
+        String sql = "SELECT * FROM opening";
+        return this.template.query(sql, new ResultSetExtractor<List<Opening>>() {
+
+            @Override
+            public List<Opening> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                int openingId, openingTime, openingClose;
+                String openingDay;
+                ArrayList<Opening> openings = new ArrayList<>();
+
+                while (rs.next()) {
+
+                    openingId = rs.getInt("openingId");
+                    openingDay = rs.getString("openingDay");
+                    openingTime = rs.getInt("openingTime");
+                    openingClose = rs.getInt("openingClose");
+
+                    openings.add(new Opening(openingId, openingDay, openingTime, openingClose));
+                }
+                return openings;
+            }
+        });
     }
 }
+
+
