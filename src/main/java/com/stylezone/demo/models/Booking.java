@@ -5,21 +5,32 @@ public class Booking {
     private String bookingTime;
     private String bookingDate;
     private String bookingName;
+    private String bookingEmail;
     private int bookingPhone;
     private String bookingComment;
     private int staffId;
 
+
     public Booking() {
     }
 
-    public Booking(int bookingId, String bookingTime, String bookingDate, String bookingName, int bookingPhone, String bookingComment, int staffId) {
+    public Booking(int bookingId, String bookingTime, String bookingDate, String bookingName,String bookingEmail, int bookingPhone, String bookingComment, int staffId) {
         this.bookingId = bookingId;
         this.bookingTime = bookingTime;
         this.bookingDate = bookingDate;
         this.bookingName = bookingName;
+        this.bookingEmail = bookingEmail;
         this.bookingPhone = bookingPhone;
         this.bookingComment = bookingComment;
         this.staffId = staffId;
+    }
+
+    public String getBookingEmail() {
+        return bookingEmail;
+    }
+
+    public void setBookingEmail(String bookingEmail) {
+        this.bookingEmail = bookingEmail;
     }
 
     public int getBookingId() {
@@ -74,20 +85,21 @@ public class Booking {
         return staffId;
     }
 
-    public void setStaffId(int staffId) {
+    public void setstaffId(int staffId) {
         this.staffId = staffId;
     }
 
     @Override
-    public String toString() {
+    public String   toString() {
         return "Booking{" +
                 "bookingId=" + bookingId +
                 ", bookingTime='" + bookingTime + '\'' +
                 ", bookingDate='" + bookingDate + '\'' +
                 ", bookingName='" + bookingName + '\'' +
+                ", bookingEmail='" + bookingEmail + '\'' +
                 ", bookingPhone=" + bookingPhone +
                 ", bookingComment='" + bookingComment + '\'' +
-                ", staffId=" + staffId +
+                ", staffId=" +  staffId +
                 '}';
     }
 }

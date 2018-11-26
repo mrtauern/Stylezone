@@ -12,7 +12,7 @@ public interface BookingService {
     //Booking
     Booking findBooking(int bookingId);
     List<Booking> getBookings();
-    Booking createBooking(Booking booking);
+    Booking saveBooking(Booking booking);
     Booking updateBooking(Booking booking);
     void deleteBooking(int bookingId);
 

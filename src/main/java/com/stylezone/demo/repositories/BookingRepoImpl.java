@@ -48,31 +48,28 @@ public class BookingRepoImpl implements BookingRepo {
             @Override
             public List<Booking> extractData(ResultSet rs) throws SQLException, DataAccessException {
                 int bookingId, bookingPhone, staffId;
-                String bookingTime, bookingDate, bookingName, bookingComment;
+                String bookingTime, bookingDate, bookingName, bookingComment, bookingEmail;
                 ArrayList<Booking> bookings = new ArrayList<>();
 
                 while (rs.next()) {
                     bookingId = rs.getInt("bookingId");
                     bookingPhone = rs.getInt("bookingPhone");
-                    staffId = rs.getInt("staffId");
+                    staffId = rs.getInt("fk_staffId");
                     bookingTime = rs.getString("bookingTime");
                     bookingDate = rs.getString("bookingDate");
                     bookingName = rs.getString("bookingName");
+                    bookingEmail = rs.getString("bookingEmail");
                     bookingComment = rs.getString("bookingComment");
 
-                    bookings.add(new Booking(bookingId, bookingTime, bookingDate, bookingName, bookingPhone, bookingComment, staffId));
+                    bookings.add(new Booking(bookingId, bookingTime, bookingDate, bookingName,bookingEmail, bookingPhone, bookingComment, staffId));
                 }
                 return bookings;
             }
         });
     }
 
-    @Override
-    public Booking createBooking(Booking booking) {
 
 
-        return null;
-    }
 
     @Override
     public Booking updateBooking(Booking booking) {
@@ -153,6 +150,23 @@ public class BookingRepoImpl implements BookingRepo {
                 return openings;
             }
         });
+    }
+    @Override
+    public Booking saveBooking(Booking booking){
+        log.info(booking.getBookingDate()+""+booking.getBookingTime()+""+booking.getBookingEmail()+"staffId="+booking.getStaffId());
+        String sql = "INSERT INTO stylezone.Booking VALUE(default,?,STR_TO_DATE(?,'%d-%m-%Y'),?,?,?,?,?)";
+        String bookingTime = booking.getBookingTime();
+        String bookingDate = booking.getBookingDate();
+        String bookingName = booking.getBookingName();
+        String bookingEmail = booking.getBookingEmail();
+        int bookingPhone = booking.getBookingPhone();
+        String bookingComment = booking.getBookingComment();
+        int fk_staffId = booking.getStaffId();
+
+        this.template.update(sql, bookingTime, bookingDate, bookingName, bookingEmail, bookingPhone, bookingComment, fk_staffId);
+
+        return booking;
+
     }
 }
 
