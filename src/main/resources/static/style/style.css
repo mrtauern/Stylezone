@@ -1,0 +1,71 @@
+body {
+    font-family: Verdana, sans-serif;
+}
+
+#bookingSelector{
+
+}
+
+#bookingSelector ul{
+    list-style-type: none;
+}
+
+#bookingSelector #weekSelector{
+    padding: 70px 25px;
+    width: 100%;
+    background: #1abc9c;
+    text-align: center;
+}
+
+#bookingSelector #weekSelector ul{
+    margin: 0;
+    padding: 0;
+}
+
+#bookingSelector #weekSelector ul li{
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Previous button inside month header */
+#bookingSelector #weekSelector .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+/* Next button */
+#bookingSelector #weekSelector .next {
+    float: right;
+    padding-top: 10px;
+}
+
+#bookingSelector #bookingTimes{
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
+}
+
+#bookingSelector #bookingTimes li{
+    display: inline-grid;
+    width: 16%;
+    color: #666;
+    text-align: center;
+}
+
+#bookingSelector #bookingTimes li ul{
+    padding: 0px;
+}
+
+#bookingSelector #bookingTimes li ul li{
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 7px;
+
+}
+
+#bookingSelector #bookingTimes li ul li a{
+    margin-bottom: -7px;
+}

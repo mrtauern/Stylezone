@@ -1,6 +1,7 @@
 package com.stylezone.demo.services;
 
 import com.stylezone.demo.models.Booking;
+import com.stylezone.demo.models.BookingGroup;
 import com.stylezone.demo.models.Holiday;
 import com.stylezone.demo.models.Opening;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ public interface BookingService {
     //Booking
     Booking findBooking(int bookingId);
     List<Booking> getBookings();
+    List<BookingGroup> getBookingGroups(String date, String timeStart, String timeEnd);
     Booking createBooking(Booking booking);
     Booking updateBooking(Booking booking);
     void deleteBooking(int bookingId);

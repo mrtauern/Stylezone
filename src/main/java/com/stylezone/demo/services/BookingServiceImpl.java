@@ -1,16 +1,20 @@
 package com.stylezone.demo.services;
 
 import com.stylezone.demo.models.Booking;
+import com.stylezone.demo.models.BookingGroup;
 import com.stylezone.demo.models.Holiday;
 import com.stylezone.demo.models.Opening;
 import com.stylezone.demo.repositories.BookingRepo;
+import com.stylezone.demo.repositories.BookingRepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class BookingServiceImpl implements BookingService {
+    Logger log = Logger.getLogger(BookingRepoImpl.class.getName());
 
 
     @Autowired
@@ -26,6 +30,14 @@ public class BookingServiceImpl implements BookingService {
     public List<Booking> getBookings() {
         List<Booking> bookings = bookingRepo.getBookings();
         return bookings;
+    }
+
+    @Override
+    public List<BookingGroup> getBookingGroups(String date, String timeStart, String timeEnd) {
+        log.info("BookingService.getBookingGroups("+date+", "+timeStart+", "+timeEnd+")");
+        List<BookingGroup> bookingGroups = bookingRepo.getBookingGroups(date, timeStart, timeEnd);
+        log.info("bookingGroups length"+bookingGroups.size());
+        return bookingGroups;
     }
 
     @Override

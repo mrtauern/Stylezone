@@ -1,6 +1,7 @@
 package com.stylezone.demo.repositories;
 
 import com.stylezone.demo.models.Booking;
+import com.stylezone.demo.models.BookingGroup;
 import com.stylezone.demo.models.Holiday;
 import com.stylezone.demo.models.Opening;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,120 @@ public class BookingRepoImpl implements BookingRepo {
                 return bookings;
             }
         });
+    }
+
+    @Override
+    public List<BookingGroup> getBookingGroups(String date, String timeStart, String timeEnd) {
+        log.info("BookingRepo.getBookingGroups("+date+", "+timeStart+", "+timeEnd+")");
+
+        String sql = "SELECT HOUR(bookingTime) AS startTime, COUNT(bookingId) AS booked FROM Booking\n" +
+                "WHERE bookingDate = STR_TO_DATE(?, '%d-%m-%Y')\n" +
+                "AND bookingTime > ?\n" +
+                "AND bookingTime < ?\n" +
+                "GROUP BY HOUR(bookingTime)";
+
+        return this.template.query(sql, new ResultSetExtractor<List<BookingGroup>>() {
+
+            @Override
+            public List<BookingGroup> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                int bookingGroupId, boookingGroupBooked, boookingGroupTotal;
+                String bookingGroupStart,  bookingGroupEnd;
+                List<BookingGroup> bookingGroups = new ArrayList<>();
+                List<BookingGroup> bookingTemp = new ArrayList<>();
+
+                while (rs.next()) {
+                    bookingGroupStart = rs.getString("startTime");
+                    bookingGroupStart = bookingGroupStart + ":00";
+                    boookingGroupBooked = rs.getInt("booked");
+
+                    bookingTemp.add(new BookingGroup(bookingGroupStart, boookingGroupBooked));
+                }
+
+                for (int i = Integer.parseInt(timeStart.substring(0,2)); i <= Integer.parseInt(timeEnd.substring(0,2)); i++){
+
+                    boookingGroupTotal = 6;
+
+                    bookingGroupStart = "" + i + ":00";
+                    bookingGroupEnd = "" + (i+1) + ":00";
+
+
+                    if(i == Integer.parseInt(timeStart.substring(0,2))){
+                        int param = Integer.parseInt(timeStart.substring(3,5));
+                        switch (param){
+                            case 00:
+                                boookingGroupTotal = 6;
+                                break;
+                            case 10:
+                                boookingGroupTotal = 5;
+                                bookingGroupStart = "" + i + ":10";
+                                break;
+                            case 20:
+                                boookingGroupTotal = 4;
+                                bookingGroupStart = "" + i + ":20";
+                                break;
+                            case 30:
+                                boookingGroupTotal = 3;
+                                bookingGroupStart = "" + i + ":30";
+                                break;
+                            case 40:
+                                boookingGroupTotal = 2;
+                                bookingGroupStart = "" + i + ":40";
+                                break;
+                            case 50:
+                                boookingGroupTotal = 1;
+                                bookingGroupStart = "" + i + ":50";
+                                break;
+                        }
+                    }
+
+                    if(i == Integer.parseInt(timeEnd.substring(0,2))){
+                        int param = Integer.parseInt(timeEnd.substring(3,5));
+                        switch (param){
+                            case 00:
+                                boookingGroupTotal = 0;
+                                break;
+                            case 10:
+                                boookingGroupTotal = 1;
+                                bookingGroupEnd = "" + i + ":10";
+                                break;
+                            case 20:
+                                boookingGroupTotal = 2;
+                                bookingGroupEnd = "" + i + ":20";
+                                break;
+                            case 30:
+                                boookingGroupTotal = 3;
+                                bookingGroupEnd = "" + i + ":30";
+                                break;
+                            case 40:
+                                boookingGroupTotal = 4;
+                                bookingGroupEnd = "" + i + ":40";
+                                break;
+                            case 50:
+                                boookingGroupTotal = 5;
+                                bookingGroupEnd = "" + i + ":50";
+                                break;
+                        }
+
+
+                    }
+
+                    boookingGroupBooked = 0;
+
+                    for (BookingGroup temp: bookingTemp) {
+                        if(i == Integer.parseInt(temp.getBookingGroupStart().substring(0,2))){
+                            boookingGroupBooked = temp.getBoookingGroupBooked();
+                        }
+                    }
+
+                    assert boookingGroupBooked <= boookingGroupTotal;
+
+                    log.info("bookingGroupStart:" + bookingGroupStart + ", bookingGroupEnd;" + bookingGroupEnd + ", boookingGroupBooked:" + boookingGroupBooked + ", boookingGroupTotal" + boookingGroupTotal);
+
+                    bookingGroups.add(new BookingGroup(bookingGroupStart, bookingGroupEnd, boookingGroupBooked, boookingGroupTotal));
+                }
+                return bookingGroups;
+            }
+        }, date, timeStart, timeEnd);
     }
 
     @Override
