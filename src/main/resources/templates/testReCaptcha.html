@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:href="http://www.w3.org/1999/xhtml">
+<head th:include="fragments/head :: styles">
+    <!--<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+<div class="container">
+    <header th:include="fragments/header :: navbar"></header>
+
+
+    <div class="form-group">
+        <header th:include="fragments/header :: navbar"></header>
+
+        <h2>Write your username, password and email</h2>
+        <br>
+
+        <form class="needs-validation" method="Post" th:action="@{/testReCaptcha}">
+
+            <input type="text" class="form-control mr-sm-2"  th:name="userName" placeholder="Username"/>
+            <br>
+            <!-- reCaptcha html><-->
+            <div class="g-recaptcha" data-sitekey="6LeWE30UAAAAAL8uXaRigoZ4ZSzufWzm0QnpgGLg">asd</div>
+
+            <button class="btn btn-primary" type="submit" value="Create User">Create</button>
+
+        </form>
+
+    </div>
+
+
+
+
+    <footer th:include="fragments/footer :: footer"></footer>
+</div>
+
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+</body>
+</html>
