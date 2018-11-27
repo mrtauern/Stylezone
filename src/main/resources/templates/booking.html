@@ -9,6 +9,13 @@
 
     <h1>Book tid</h1>
 
+    <form class="form-inline">
+        <label>Gå tll dato: </label>
+        <input type="date" name="date" class="form-control">
+        <button type="submit" class="btn btn-primary">Gå</button>
+    </form>
+    <br>
+
     <div id="bookingSelector">
         <div id="weekSelector">
             <ul>
@@ -23,13 +30,13 @@
                 <ul th:each="monday : ${monday}">
                     <li>
                         <span th:switch="${monday.bookingGroupFree}">
-                            <a th:case="6" th:href="${'timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="5" th:href="${'timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="4" th:href="${'timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="3" th:href="${'timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="2" th:href="${'timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-warning btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="1" th:href="${'timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-warning btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="0" th:href="${'timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-danger btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
+                            <a th:case="6" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
+                            <a th:case="5" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
+                            <a th:case="4" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
+                            <a th:case="3" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
+                            <a th:case="2" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-warning btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
+                            <a th:case="1" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-warning btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
+                            <a th:case="0" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-danger btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
                         </span>
                         <br><span style="font-size:10px" th:text="${monday.bookingGroupFree + ' ledige tider'}"></span>
                     </li>
