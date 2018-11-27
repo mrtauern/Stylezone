@@ -69,6 +69,39 @@ public class BookingRepoImpl implements BookingRepo {
     }
 
     @Override
+    public List<Booking> getSelectedBookings(String date, String timeStart, String timeEnd) {
+        log.info("BookingRepo.getSelectedBookings("+date+", "+timeStart+", "+timeEnd+")");
+
+        String sql = "SELECT * FROM Booking\n" +
+                "WHERE bookingDate = STR_TO_DATE(?, '%d-%m-%Y')\n" +
+                "AND bookingTime >= ?\n" +
+                "AND bookingTime < ?\n" +
+                "ORDER BY bookingTime ASC";
+        return this.template.query(sql, new ResultSetExtractor<List<Booking>>() {
+
+            @Override
+            public List<Booking> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                int bookingId, bookingPhone, staffId;
+                String bookingTime, bookingDate, bookingName, bookingComment;
+                ArrayList<Booking> bookings = new ArrayList<>();
+
+                while (rs.next()) {
+                    bookingId = rs.getInt("bookingId");
+                    bookingPhone = rs.getInt("bookingPhone");
+                    staffId = rs.getInt("fk_staffId");
+                    bookingTime = rs.getString("bookingTime");
+                    bookingDate = rs.getString("bookingDate");
+                    bookingName = rs.getString("bookingName");
+                    bookingComment = rs.getString("bookingComment");
+
+                    bookings.add(new Booking(bookingId, bookingTime, bookingDate, bookingName, bookingPhone, bookingComment, staffId));
+                }
+                return bookings;
+            }
+        }, date, timeStart, timeEnd);
+    }
+
+    @Override
     public List<BookingGroup> getBookingGroups(String date, String timeStart, String timeEnd) {
         log.info("BookingRepo.getBookingGroups("+date+", "+timeStart+", "+timeEnd+")");
 
@@ -83,21 +116,23 @@ public class BookingRepoImpl implements BookingRepo {
             @Override
             public List<BookingGroup> extractData(ResultSet rs) throws SQLException, DataAccessException {
                 int bookingGroupId, boookingGroupBooked, boookingGroupTotal;
-                String bookingGroupStart,  bookingGroupEnd;
+                String bookingGroupStart,  bookingGroupEnd, bookingGroupDate;
                 List<BookingGroup> bookingGroups = new ArrayList<>();
-                List<BookingGroup> bookingTemp = new ArrayList<>();
+                //List<BookingGroup> bookingTemp = new ArrayList<>();
 
                 while (rs.next()) {
                     bookingGroupStart = rs.getString("startTime");
                     bookingGroupStart = bookingGroupStart + ":00";
                     boookingGroupBooked = rs.getInt("booked");
 
-                    bookingTemp.add(new BookingGroup(bookingGroupStart, boookingGroupBooked));
+                    bookingGroups.add(new BookingGroup(bookingGroupStart, boookingGroupBooked));
                 }
 
-                for (int i = Integer.parseInt(timeStart.substring(0,2)); i <= Integer.parseInt(timeEnd.substring(0,2)); i++){
+                /*for (int i = Integer.parseInt(timeStart.substring(0,2)); i <= Integer.parseInt(timeEnd.substring(0,2)); i++){
 
                     boookingGroupTotal = 6;
+
+                    bookingGroupDate = date;
 
                     bookingGroupStart = "" + i + ":00";
                     bookingGroupEnd = "" + (i+1) + ":00";
@@ -173,10 +208,10 @@ public class BookingRepoImpl implements BookingRepo {
 
                     assert boookingGroupBooked <= boookingGroupTotal;
 
-                    log.info("bookingGroupStart:" + bookingGroupStart + ", bookingGroupEnd;" + bookingGroupEnd + ", boookingGroupBooked:" + boookingGroupBooked + ", boookingGroupTotal" + boookingGroupTotal);
+                    log.info("bookingGroupStart:" + bookingGroupStart + ", bookingGroupEnd;" + bookingGroupEnd + ", bookingGroupEnd;" + bookingGroupDate + ", boookingGroupBooked:" + boookingGroupBooked + ", boookingGroupTotal" + boookingGroupTotal);
 
-                    bookingGroups.add(new BookingGroup(bookingGroupStart, bookingGroupEnd, boookingGroupBooked, boookingGroupTotal));
-                }
+                    bookingGroups.add(new BookingGroup(bookingGroupStart, bookingGroupEnd, bookingGroupDate, boookingGroupBooked, boookingGroupTotal));
+                }*/
                 return bookingGroups;
             }
         }, date, timeStart, timeEnd);

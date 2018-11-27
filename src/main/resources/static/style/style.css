@@ -13,7 +13,7 @@ body {
 #bookingSelector #weekSelector{
     padding: 70px 25px;
     width: 100%;
-    background: #1abc9c;
+    background: #343A40;
     text-align: center;
 }
 
@@ -29,16 +29,22 @@ body {
     letter-spacing: 3px;
 }
 
+#bookingSelector #weekSelector ul li a{
+    color: #FFFFFF;
+    font-size: 40px;
+}
+
 /* Previous button inside month header */
 #bookingSelector #weekSelector .prev {
     float: left;
-    padding-top: 10px;
+    /*padding-top: 10px;*/
+
 }
 
 /* Next button */
 #bookingSelector #weekSelector .next {
     float: right;
-    padding-top: 10px;
+    /*padding-top: 10px;*/
 }
 
 #bookingSelector #bookingTimes{
@@ -52,6 +58,7 @@ body {
     width: 16%;
     color: #666;
     text-align: center;
+    background-color:#ddd;
 }
 
 #bookingSelector #bookingTimes li ul{
@@ -63,6 +70,7 @@ body {
     text-align: center;
     width: 100%;
     margin-bottom: 7px;
+    /*background-color: #EEEEEE;*/
 
 }
 

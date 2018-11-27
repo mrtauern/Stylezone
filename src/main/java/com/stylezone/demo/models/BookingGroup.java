@@ -2,7 +2,7 @@ package com.stylezone.demo.models;
 
 public class BookingGroup {
     private int bookingGroupId, boookingGroupBooked, boookingGroupTotal, bookingGroupFree;
-    private String bookingGroupStart, bookingGroupEnd;
+    private String bookingGroupStart, bookingGroupEnd, bookingGroupDate;
 
     public BookingGroup() {
     }
@@ -12,9 +12,10 @@ public class BookingGroup {
         this.bookingGroupStart = bookingGroupStart;
     }
 
-    public BookingGroup(String bookingGroupStart, String bookingGroupEnd, int boookingGroupBooked, int boookingGroupTotal) {
+    public BookingGroup(String bookingGroupStart, String bookingGroupEnd, String bookingGroupDate, int boookingGroupBooked, int boookingGroupTotal) {
         this.bookingGroupStart = bookingGroupStart;
         this.bookingGroupEnd = bookingGroupEnd;
+        this.bookingGroupDate = bookingGroupDate;
         this.boookingGroupBooked = boookingGroupBooked;
         this.boookingGroupTotal = boookingGroupTotal;
         this.bookingGroupFree = boookingGroupTotal - boookingGroupBooked;
@@ -42,6 +43,14 @@ public class BookingGroup {
 
     public void setBookingGroupEnd(String bookingGroupEnd) {
         this.bookingGroupEnd = bookingGroupEnd;
+    }
+
+    public String getBookingGroupDate() {
+        return bookingGroupDate;
+    }
+
+    public void setBookingGroupDate(String bookingGroupDate) {
+        this.bookingGroupDate = bookingGroupDate;
     }
 
     public int getBoookingGroupBooked() {

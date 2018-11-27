@@ -1,5 +1,6 @@
 package com.stylezone.demo.controllers;
 
+import com.stylezone.demo.models.Booking;
 import com.stylezone.demo.models.BookingGroup;
 import com.stylezone.demo.services.BookingService;
 import com.stylezone.demo.services.BookingServiceImpl;
@@ -20,6 +21,7 @@ public class BookingController {
     private final String REDIRECT = "redirect:/";
     private final String INDEX = "index";
     private final String BOOKING = "booking";
+    private final String TIMESELECT = "timeSelect";
 
     Logger log = Logger.getLogger(BookingController.class.getName());
 
@@ -45,5 +47,17 @@ public class BookingController {
         model.addAttribute("pageTitle", "Book tid");
 
         return BOOKING;
+    }
+
+    @GetMapping("/timeSelect/{date}/{start}/{end}")
+    public String timeSelect(@PathVariable String date, @PathVariable String start, @PathVariable String end, Model model) {
+        log.info("timeSelect called...");
+
+        List<Booking> bookings = bookingService.getSelectedBookings(date, start, end);
+        model.addAttribute("bookings", bookings);
+        model.addAttribute("date", date);
+        model.addAttribute("pageTitle", "Tider for " + date + ", mellem kl." + start + " - " + end);
+
+        return TIMESELECT;
     }
 }

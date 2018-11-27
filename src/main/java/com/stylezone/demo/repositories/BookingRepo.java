@@ -14,6 +14,7 @@ public interface BookingRepo {
     //Booking
     Booking findBooking(int bookingId);
     List<Booking> getBookings();
+    List<Booking> getSelectedBookings(String date, String timeStart, String timeEnd);
     List<BookingGroup> getBookingGroups(String date, String timeStart, String timeEnd);
     Booking createBooking(Booking booking);
     Booking updateBooking(Booking booking);
