@@ -30,7 +30,10 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking saveBooking(Booking booking){
+
+
         booking = bookingRepo.saveBooking(booking);
+
         return booking;
     }
 

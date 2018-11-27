@@ -27,12 +27,12 @@
         <br>
 
         <!--<input type="hidden" name = "bookingId" th:field="${booking.bookingId}"/>-->
-        <input type="hidden" th:name = "bookingTime" th:value="${time}"/>
-        <input type="hidden" th:name = "bookingDate" th:value="${date}"/>
+        <input type="hidden" th:name = "bookingTime" th:value="${time}" required/>
+        <input type="hidden" th:name = "bookingDate" th:value="${date}" required/>
 
 
         <h3>Vælg Frisør</h3>
-        <select th:name = "fk_StaffId">
+        <select th:name = "staffId">
             <option th:value="1">Første ledige</option>
             <option th:value="2">John</option>
             <option th:value="3">kollegaer</option>
