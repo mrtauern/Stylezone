@@ -2,7 +2,6 @@ package com.stylezone.demo.controllers;
 
 import com.stylezone.demo.models.ReCaptchaResponse;
 import com.stylezone.demo.services.BookingService;
-import com.stylezone.demo.services.BookingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
@@ -17,36 +16,47 @@ import java.util.logging.Logger;
 
 @Controller
 public class BookingController {
+
     @Autowired
     BookingService bookingService;
+
+    @Autowired
+    RestTemplate restTemplate;
 
     private final String test = "testReCaptcha";
 
     Logger log = Logger.getLogger(BookingController.class.getName());
 
     @GetMapping("/testReCaptcha")
-    public String testReCapcha(Model model) {
+    public String testReCapcha() {
         log.info("Recaptchatest called");
         // https://www.youtube.com/watch?v=5wZWAqEwBj8
 
         return test;
     }
 
-    @RequestMapping(value = "/testReCapcha", method = RequestMethod.POST)
-    public String testReCaptcha(@RequestParam(name = "g-recaptcha-response") String captchaResponse) {
+    @RequestMapping(value = "/testReCaptcha", method = RequestMethod.POST)
+    public String testReCaptcha(@RequestParam("g-recaptcha-response") String captchaResponse) {
+
         //https://www.youtube.com/watch?v=5wZWAqEwBj8
         String url = "https://www.google.com/recaptcha/api/siteverify";
-        String params = "/secret=6LeWE30UAAAAAMUpo7seu91Da6DXig-DQxN8YKEQ(response="+captchaResponse;
+        String params = "?secret=6LeWE30UAAAAAMUpo7seu91Da6DXig-DQxN8YKEQ&response="+captchaResponse;
 
-        RestTemplate restTemplate = new RestTemplate();
+        log.info("testReCaptcha POST called... reCaptchaResponse = "+captchaResponse);
+
         ReCaptchaResponse reCaptchaResponse = restTemplate.exchange(url+params, HttpMethod.POST, null, ReCaptchaResponse.class).getBody();
 
         if(reCaptchaResponse.isSuccess()) {
-            log.info("recapcha robot check is a success");
+            log.info("recaptcha robot check is a success");
 
-            return "recaptcha check success";
+            return "success";
         }
 
-        return "recaptcha check have failed";
+        return test;
+    }
+
+    @GetMapping("/success")
+    public String success() {
+        return "success";
     }
 }

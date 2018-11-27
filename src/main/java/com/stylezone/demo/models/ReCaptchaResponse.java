@@ -6,6 +6,19 @@ public class ReCaptchaResponse {
     private String challenge_ts;
     private String hostname;
 
+    public ReCaptchaResponse(boolean success) {
+        this.success = success;
+    }
+
+    public ReCaptchaResponse() {
+    }
+
+    public ReCaptchaResponse(boolean success, String challenge_ts, String hostname) {
+        this.success = success;
+        this.challenge_ts = challenge_ts;
+        this.hostname = hostname;
+    }
+
     public boolean isSuccess() {
         return success;
     }
