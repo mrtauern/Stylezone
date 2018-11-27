@@ -31,10 +31,18 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking saveBooking(Booking booking){
 
+        if(booking.getStaffId() > 0 ||
+            !booking.getBookingEmail().equals("") ||
+            !booking.getBookingTime().equals("00:00:00") ||
+            !booking.getBookingDate().equals("00-00-0000") ||
+            booking.getBookingPhone()>0 ||
+            !booking.getBookingName().equals("")) {
 
-        booking = bookingRepo.saveBooking(booking);
+            booking = bookingRepo.saveBooking(booking);
 
-        return booking;
+            return booking;
+        }
+        return null;
     }
 
     @Override

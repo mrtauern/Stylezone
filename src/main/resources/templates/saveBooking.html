@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:href="http://www.w3.org/1999/xhtml"
-      xmlns:classa="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:include="fragments/head :: styles">
-    <!--<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>-->
+
 </head>
 <body>
 <div class="container">
@@ -14,19 +13,18 @@
     <form method="Post" th:action="@{/saveBooking}" th:object ="${booking}">
 
         <label>Fulde navn:</label>
-        <input type = "text" class ="form-control mr-sm-2" th:name="bookingName" placeholder="Arne Arnesen" required/>
+        <input type = "text" class ="form-control mr-sm-2" th:name="bookingName" placeholder="Fornavn Efternavn" required/>
 
         <label>Telefon nummer:</label>
         <br>
-        <input type = "number" class="form-control-mr-sm-2" th:name="bookingPhone" placeholder ="10203040" required/>
+        <input type = "number" class="form-control-mr-sm-2" th:name="bookingPhone" placeholder ="21232845" required/>
         <br>
 
         <label>Email Adresse:</label>
         <br>
-        <input type = "text" class = "form-control-mr-sm-2" th:name = "bookingEmail" placeholder = "ArneArenesen@gmail.com" required/>
+        <input type = "text" class = "form-control-mr-sm-2" th:name = "bookingEmail" placeholder = "Email@provider.com" required/>
         <br>
 
-        <!--<input type="hidden" name = "bookingId" th:field="${booking.bookingId}"/>-->
         <input type="hidden" th:name = "bookingTime" th:value="${time}" required/>
         <input type="hidden" th:name = "bookingDate" th:value="${date}" required/>
 
@@ -43,16 +41,9 @@
         <textarea rows ="6" cols = "50" th:name = "bookingComment" placeholder = "Skriv eventuel kommentar her"></textarea>
         <br>
 
-        <!--<div class="dropdown">
-            <label>Vælg Frisør</label>
-            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </div>-->
 
+        <!-- reCaptcha html><-->
+        <div class="g-recaptcha" data-sitekey="6LeWE30UAAAAAL8uXaRigoZ4ZSzufWzm0QnpgGLg"></div>
 
         <button class = "btn btn-primary" type ="submit" value="book tid">Book</button>
 
@@ -60,5 +51,7 @@
     </form>
 </div>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
 </body>
 </html>

@@ -153,14 +153,16 @@ public class BookingRepoImpl implements BookingRepo {
     }
     @Override
     public Booking saveBooking(Booking booking){
-        log.info(booking.getBookingDate()+""+booking.getBookingTime()+""+booking.getBookingEmail()+"staffId="+booking.getStaffId());
+
+
         String sql = "INSERT INTO stylezone.Booking VALUES(default,?,STR_TO_DATE(?,'%d-%m-%Y'),?,?,?,?,?)";
         String bookingTime = booking.getBookingTime();
         String bookingDate = booking.getBookingDate();
         String bookingName = booking.getBookingName();
         String bookingEmail = booking.getBookingEmail();
-        int bookingPhone = booking.getBookingPhone();
         String bookingComment = booking.getBookingComment();
+
+        int bookingPhone = booking.getBookingPhone();
         int fk_staffId = booking.getStaffId();
 
         this.template.update(sql, bookingTime, bookingDate, bookingName, bookingEmail, bookingPhone, bookingComment, fk_staffId);
