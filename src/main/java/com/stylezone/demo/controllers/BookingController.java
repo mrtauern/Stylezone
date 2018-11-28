@@ -52,6 +52,7 @@ public class BookingController {
 
             log.info(" "+booking.getStaffId());
             bookingService.saveBooking(booking);
+            bookingService.sendEmail(booking);
             return REDIRECT+BOOKING;
         }
 
