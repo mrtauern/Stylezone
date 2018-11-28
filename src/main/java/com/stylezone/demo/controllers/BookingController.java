@@ -24,8 +24,10 @@ public class BookingController {
     private final String REDIRECT = "redirect:/";
     private final String SAVEBOOKING = "saveBooking";
     private final String BOOKING = "booking";
-    private final String BILLEDGALLERI = "billedGalleri";
+    private final String BILLEDEGALLERI = "billedeGalleri";
     private final String INDEX = "index";
+    private final String OMOS = "omOs";
+
 
     Logger log = Logger.getLogger(BookingController.class.getName());
 
@@ -36,11 +38,11 @@ public class BookingController {
         return INDEX;
     }
 
-    @GetMapping("/billedGalleri")
+    @GetMapping("/billedeGalleri")
     public String billedGalleri() {
-        log.info("billedGalleri called...");
+        log.info("billedeGalleri called...");
 
-        return BILLEDGALLERI;
+        return BILLEDEGALLERI;
 
     }
 
@@ -82,7 +84,12 @@ public class BookingController {
 
     }
 
+    @GetMapping("/omOs")
+    public String omOs(Model model){
 
+        return OMOS;
+
+    }
 }
 
 
