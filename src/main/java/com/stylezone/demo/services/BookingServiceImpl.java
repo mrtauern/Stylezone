@@ -117,7 +117,22 @@ public class BookingServiceImpl implements BookingService {
             msg.setRecipients(Message.RecipientType.TO, address);
             msg.setSubject("Din tidsbestilling hos StyleZone den " + booking.getBookingDate()+" kl. "+booking.getBookingTime());
             msg.setSentDate(new Date());
-            msg.setText("Sampel System Generated mail");
+
+            String mailText;
+
+            mailText = "Hej "+booking.getBookingName()+"\n\n";
+            mailText += "Tak for din tidsbestilling hos StyleZone.\n\n";
+            mailText += "Vi har registreret nedenstående information om din bestilling\n\n";
+            mailText += "Tid: "+booking.getBookingTime()+"\n";
+            mailText += "Dato: "+booking.getBookingDate()+"\n";
+            mailText += "Dit tlf nr: +45"+booking.getBookingPhone()+"\n";
+            mailText += "Kommentar: "+booking.getBookingComment()+"\n\n";
+            mailText += "Er nogle af informationerne ændres eller bestillingen skal aflyses, kan StyleZone kontaktes på telefon nummer: +45 2989 7596.\n\n";
+            mailText += "Med venlig hilsen.\n";
+            mailText += "StyleZone";
+
+            msg.setText(mailText);
+
             msg.setHeader("XPriority", "1");
             Transport.send(msg);
             log.info("Mail has been sent successfully");
