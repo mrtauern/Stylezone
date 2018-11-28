@@ -1,0 +1,21 @@
+body {
+    font-family: sans-serif
+}
+h1{
+    text-align: center;
+    color: aqua;
+    margin: 30px 0 50px;
+}
+.galleri{
+    margin: 10px 50px;
+}
+.galleri img {
+    width: 230px;
+    padding: 5px;
+    filter: grayscale(50%);
+    transition: 1s;
+}
+.galleri img:hover{
+    filter:grayscale(0);
+    transform: scale(1.1);
+}
