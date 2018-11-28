@@ -1,6 +1,7 @@
 package com.stylezone.demo.repositories;
 
 import com.stylezone.demo.models.Booking;
+import com.stylezone.demo.models.BookingGroup;
 import com.stylezone.demo.models.Holiday;
 import com.stylezone.demo.models.Opening;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,8 @@ public interface BookingRepo {
     Booking findBooking(int bookingId);
     List<Booking> getBookings();
     Booking saveBooking(Booking booking);
+    List<Booking> getSelectedBookings(String date, String timeStart, String timeEnd);
+    List<BookingGroup> getBookingGroups(String date, String timeStart, String timeEnd);
     Booking updateBooking(Booking booking);
     void deleteBooking(int bookingId);
 

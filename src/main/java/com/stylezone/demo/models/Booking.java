@@ -14,7 +14,22 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(int bookingId, String bookingTime, String bookingDate, String bookingName,String bookingEmail, int bookingPhone, String bookingComment, int staffId) {
+    public Booking(String bookingTime, String bookingName) {
+        this.bookingTime = bookingTime;
+        this.bookingName = bookingName;
+    }
+
+    public Booking(String bookingTime, String bookingDate, String bookingName, int bookingPhone, String bookingComment, int staffId) {
+        this.bookingTime = bookingTime;
+        this.bookingDate = bookingDate;
+        this.bookingName = bookingName;
+        this.bookingPhone = bookingPhone;
+        this.bookingComment = bookingComment;
+        this.staffId = staffId;
+    }
+
+    public Booking(int bookingId, String bookingTime, String bookingDate, String bookingName, String bookingEmail, int bookingPhone, String bookingComment, int staffId) {
+
         this.bookingId = bookingId;
         this.bookingTime = bookingTime;
         this.bookingDate = bookingDate;

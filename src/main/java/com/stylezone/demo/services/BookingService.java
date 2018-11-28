@@ -1,10 +1,13 @@
 package com.stylezone.demo.services;
 
 import com.stylezone.demo.models.Booking;
+import com.stylezone.demo.models.BookingGroup;
 import com.stylezone.demo.models.Holiday;
 import com.stylezone.demo.models.Opening;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -13,6 +16,8 @@ public interface BookingService {
     Booking findBooking(int bookingId);
     List<Booking> getBookings();
     Booking saveBooking(Booking booking);
+    List<Booking> getSelectedBookings(String date, String timeStart, String timeEnd);
+    List<BookingGroup> getBookingGroups(String date, String timeStart, String timeEnd);
     Booking updateBooking(Booking booking);
     void deleteBooking(int bookingId);
 
@@ -26,7 +31,11 @@ public interface BookingService {
     //Opening
     Opening findOpening(int openingId);
     List<Opening> getOpenings();
-
     //Mail
     void sendEmail(Booking booking);
+
+    //calender
+    public int getWeekToday();
+    public String getDateToday();
+    public String[] getDatesOfWeek();
 }

@@ -1,6 +1,7 @@
 package com.stylezone.demo.repositories;
 
 import com.stylezone.demo.models.Booking;
+import com.stylezone.demo.models.BookingGroup;
 import com.stylezone.demo.models.Holiday;
 import com.stylezone.demo.models.Opening;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,9 +68,69 @@ public class BookingRepoImpl implements BookingRepo {
             }
         });
     }
+    @Override
+    public List<Booking> getSelectedBookings(String date, String timeStart, String timeEnd) {
+        log.info("BookingRepo.getSelectedBookings("+date+", "+timeStart+", "+timeEnd+")");
 
+        String sql = "SELECT * FROM Booking\n" +
+                "WHERE bookingDate = STR_TO_DATE(?, '%d-%m-%Y')\n" +
+                "AND bookingTime >= ?\n" +
+                "AND bookingTime < ?\n" +
+                "ORDER BY bookingTime ASC";
+        return this.template.query(sql, new ResultSetExtractor<List<Booking>>() {
 
+            @Override
+            public List<Booking> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                int bookingId, bookingPhone, staffId;
+                String bookingTime, bookingDate, bookingName, bookingEmail, bookingComment;
+                ArrayList<Booking> bookings = new ArrayList<>();
 
+                while (rs.next()) {
+                    bookingId = rs.getInt("bookingId");
+                    bookingPhone = rs.getInt("bookingPhone");
+                    staffId = rs.getInt("fk_staffId");
+                    bookingTime = rs.getString("bookingTime");
+                    bookingDate = rs.getString("bookingDate");
+                    bookingName = rs.getString("bookingName");
+                    bookingEmail = rs.getString("bookingEmail");
+                    bookingComment = rs.getString("bookingComment");
+
+                    bookings.add(new Booking(bookingId, bookingTime, bookingDate, bookingName, bookingEmail, bookingPhone, bookingComment, staffId));
+                }
+                return bookings;
+            }
+        }, date, timeStart, timeEnd);
+    }
+
+    @Override
+    public List<BookingGroup> getBookingGroups(String date, String timeStart, String timeEnd) {
+        log.info("BookingRepo.getBookingGroups("+date+", "+timeStart+", "+timeEnd+")");
+
+        String sql = "SELECT HOUR(bookingTime) AS startTime, COUNT(bookingId) AS booked FROM Booking\n" +
+                "WHERE bookingDate = STR_TO_DATE(?, '%d-%m-%Y')\n" +
+                "AND bookingTime > ?\n" +
+                "AND bookingTime < ?\n" +
+                "GROUP BY HOUR(bookingTime)";
+
+        return this.template.query(sql, new ResultSetExtractor<List<BookingGroup>>() {
+
+            @Override
+            public List<BookingGroup> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                int bookingGroupId, boookingGroupBooked, boookingGroupTotal;
+                String bookingGroupStart,  bookingGroupEnd, bookingGroupDate;
+                List<BookingGroup> bookingGroups = new ArrayList<>();
+
+                while (rs.next()) {
+                    bookingGroupStart = rs.getString("startTime");
+                    bookingGroupStart = bookingGroupStart + ":00";
+                    boookingGroupBooked = rs.getInt("booked");
+
+                    bookingGroups.add(new BookingGroup(bookingGroupStart, boookingGroupBooked));
+                }
+                return bookingGroups;
+            }
+        }, date, timeStart, timeEnd);
+    }
 
     @Override
     public Booking updateBooking(Booking booking) {
