@@ -115,7 +115,6 @@ public class BookingServiceImpl implements BookingService {
             InternetAddress[] address = InternetAddress.parse(to, true);
             //Setting the recepients from the address variable
             msg.setRecipients(Message.RecipientType.TO, address);
-            String timeStamp = new SimpleDateFormat("dd-mm-yyyy_hh:mm:ss").format(new Date());
             msg.setSubject("Din tidsbestilling hos StyleZone den " + booking.getBookingDate()+" kl. "+booking.getBookingTime());
             msg.setSentDate(new Date());
             msg.setText("Sampel System Generated mail");
@@ -123,7 +122,7 @@ public class BookingServiceImpl implements BookingService {
             Transport.send(msg);
             log.info("Mail has been sent successfully");
         } catch (MessagingException mex) {
-            System.out.println("Unable to send an email" + mex);
+            log.info("Unable to send an email" + mex);
         }
     }
 }
