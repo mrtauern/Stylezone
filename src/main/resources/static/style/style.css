@@ -6,16 +6,16 @@ h1{
     color: aqua;
     margin: 30px 0 50px;
 }
-.galleri{
-    margin: 10px 50px;
+div.galleri{
+    margin: 10px 10px;
 }
-.galleri img {
-    width: 230px;
-    padding: 5px;
-    filter: grayscale(50%);
+div.galleri img {
+    width: 210px;
+    padding: 10px;
+    filter: grayscale(100%);
     transition: 1s;
 }
-.galleri img:hover{
+div.galleri img:hover{
     filter:grayscale(0);
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
