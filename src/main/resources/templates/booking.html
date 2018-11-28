@@ -21,28 +21,28 @@
             <ul>
                 <li class="prev"><a href="#">&#10094;</a></li>
                 <li class="next"><a href="#">&#10095;</a></li>
-                <li>Uge 42<br><span style="font-size:18px">1/10 - 6/10</span></li>
+                <li>Uge <span th:text="${weekNumber}"></span><br><span style="font-size:18px" th:text="${monday + ' - ' + friday}"></span></li>
             </ul>
         </div>
 
         <ul id="bookingTimes">
-            <li>Mandag<br><span style="font-size:12px">1/10</span>
-                <ul th:each="monday : ${monday}">
+            <li>Mandag<br><span style="font-size:12px" th:text="${monday}"></span>
+                <ul th:each="mondayBooking : ${mondayBookings}">
                     <li>
-                        <span th:switch="${monday.bookingGroupFree}">
-                            <a th:case="6" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="5" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="4" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="3" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="2" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-warning btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="1" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-warning btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
-                            <a th:case="0" th:href="${'/timeSelect/' + monday.bookingGroupDate + '/' + monday.bookingGroupStart + '/' + monday.bookingGroupEnd}" class="btn btn-danger btn-sm" th:text="${monday.bookingGroupStart + ' - ' + monday.bookingGroupEnd}"></a>
+                        <span th:switch="${mondayBooking.bookingGroupFree}">
+                            <a th:case="6" th:href="${'/timeSelect/' + mondayBooking.bookingGroupDate + '/' + mondayBooking.bookingGroupStart + '/' + mondayBooking.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${mondayBooking.bookingGroupStart + ' - ' + mondayBooking.bookingGroupEnd}"></a>
+                            <a th:case="5" th:href="${'/timeSelect/' + mondayBooking.bookingGroupDate + '/' + mondayBooking.bookingGroupStart + '/' + mondayBooking.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${mondayBooking.bookingGroupStart + ' - ' + mondayBooking.bookingGroupEnd}"></a>
+                            <a th:case="4" th:href="${'/timeSelect/' + mondayBooking.bookingGroupDate + '/' + mondayBooking.bookingGroupStart + '/' + mondayBooking.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${mondayBooking.bookingGroupStart + ' - ' + mondayBooking.bookingGroupEnd}"></a>
+                            <a th:case="3" th:href="${'/timeSelect/' + mondayBooking.bookingGroupDate + '/' + mondayBooking.bookingGroupStart + '/' + mondayBooking.bookingGroupEnd}" class="btn btn-success btn-sm" th:text="${mondayBooking.bookingGroupStart + ' - ' + mondayBooking.bookingGroupEnd}"></a>
+                            <a th:case="2" th:href="${'/timeSelect/' + mondayBooking.bookingGroupDate + '/' + mondayBooking.bookingGroupStart + '/' + mondayBooking.bookingGroupEnd}" class="btn btn-warning btn-sm" th:text="${mondayBooking.bookingGroupStart + ' - ' + mondayBooking.bookingGroupEnd}"></a>
+                            <a th:case="1" th:href="${'/timeSelect/' + mondayBooking.bookingGroupDate + '/' + mondayBooking.bookingGroupStart + '/' + mondayBooking.bookingGroupEnd}" class="btn btn-warning btn-sm" th:text="${mondayBooking.bookingGroupStart + ' - ' + mondayBooking.bookingGroupEnd}"></a>
+                            <a th:case="0" th:href="${'/timeSelect/' + mondayBooking.bookingGroupDate + '/' + mondayBooking.bookingGroupStart + '/' + mondayBooking.bookingGroupEnd}" class="btn btn-danger btn-sm" th:text="${mondayBooking.bookingGroupStart + ' - ' + mondayBooking.bookingGroupEnd}"></a>
                         </span>
-                        <br><span style="font-size:10px" th:text="${monday.bookingGroupFree + ' ledige tider'}"></span>
+                        <br><span style="font-size:10px" th:text="${mondayBooking.bookingGroupFree + ' ledige tider'}"></span>
                     </li>
                 </ul>
             </li>
-            <li>Tirsdag<br><span style="font-size:12px">2/10</span>
+            <li>Tirsdag<br><span style="font-size:12px" th:text="${tuesday}"></span>
                 <ul>
                     <li>
                         <a href="#" class="btn btn-success btn-sm">10:00 - 11:00</a>
@@ -82,7 +82,7 @@
                     </li>
                 </ul>
             </li>
-            <li>Onsdag<br><span style="font-size:12px">3/10</span>
+            <li>Onsdag<br><span style="font-size:12px" th:text="${wednesday}"></span>
                 <ul>
                     <li>
                         <a href="#" class="btn btn-success btn-sm">10:00 - 11:00</a>
@@ -122,7 +122,7 @@
                     </li>
                 </ul>
             </li>
-            <li>Torsdag<br><span style="font-size:12px">4/10</span>
+            <li>Torsdag<br><span style="font-size:12px" th:text="${thursday}"></span>
                 <ul>
                     <li>
                         <a href="#" class="btn btn-success btn-sm">10:00 - 11:00</a>
@@ -162,7 +162,7 @@
                     </li>
                 </ul>
             </li>
-            <li>Fredag<br><span style="font-size:12px">5/10</span>
+            <li>Fredag<br><span style="font-size:12px" th:text="${friday}"></span>
                 <ul>
                     <li>
                         <a href="#" class="btn btn-success btn-sm">10:00 - 11:00</a>
@@ -202,7 +202,7 @@
                     </li>
                 </ul>
             </li>
-            <li>Lørdag<br><span style="font-size:12px">6/10</span>
+            <li>Lørdag<br><span style="font-size:12px" th:text="${saturday}"></span>
                 <ul>
                     <li>
                         <a href="#" class="btn btn-success btn-sm">10:00 - 11:00</a>

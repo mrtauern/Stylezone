@@ -6,6 +6,8 @@ import com.stylezone.demo.models.Holiday;
 import com.stylezone.demo.models.Opening;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -29,4 +31,9 @@ public interface BookingService {
     //Opening
     Opening findOpening(int openingId);
     List<Opening> getOpenings();
+
+    //calender
+    public int getWeekToday();
+    public String getDateToday();
+    public String[] getDatesOfWeek();
 }

@@ -118,7 +118,6 @@ public class BookingRepoImpl implements BookingRepo {
                 int bookingGroupId, boookingGroupBooked, boookingGroupTotal;
                 String bookingGroupStart,  bookingGroupEnd, bookingGroupDate;
                 List<BookingGroup> bookingGroups = new ArrayList<>();
-                //List<BookingGroup> bookingTemp = new ArrayList<>();
 
                 while (rs.next()) {
                     bookingGroupStart = rs.getString("startTime");
@@ -127,91 +126,6 @@ public class BookingRepoImpl implements BookingRepo {
 
                     bookingGroups.add(new BookingGroup(bookingGroupStart, boookingGroupBooked));
                 }
-
-                /*for (int i = Integer.parseInt(timeStart.substring(0,2)); i <= Integer.parseInt(timeEnd.substring(0,2)); i++){
-
-                    boookingGroupTotal = 6;
-
-                    bookingGroupDate = date;
-
-                    bookingGroupStart = "" + i + ":00";
-                    bookingGroupEnd = "" + (i+1) + ":00";
-
-
-                    if(i == Integer.parseInt(timeStart.substring(0,2))){
-                        int param = Integer.parseInt(timeStart.substring(3,5));
-                        switch (param){
-                            case 00:
-                                boookingGroupTotal = 6;
-                                break;
-                            case 10:
-                                boookingGroupTotal = 5;
-                                bookingGroupStart = "" + i + ":10";
-                                break;
-                            case 20:
-                                boookingGroupTotal = 4;
-                                bookingGroupStart = "" + i + ":20";
-                                break;
-                            case 30:
-                                boookingGroupTotal = 3;
-                                bookingGroupStart = "" + i + ":30";
-                                break;
-                            case 40:
-                                boookingGroupTotal = 2;
-                                bookingGroupStart = "" + i + ":40";
-                                break;
-                            case 50:
-                                boookingGroupTotal = 1;
-                                bookingGroupStart = "" + i + ":50";
-                                break;
-                        }
-                    }
-
-                    if(i == Integer.parseInt(timeEnd.substring(0,2))){
-                        int param = Integer.parseInt(timeEnd.substring(3,5));
-                        switch (param){
-                            case 00:
-                                boookingGroupTotal = 0;
-                                break;
-                            case 10:
-                                boookingGroupTotal = 1;
-                                bookingGroupEnd = "" + i + ":10";
-                                break;
-                            case 20:
-                                boookingGroupTotal = 2;
-                                bookingGroupEnd = "" + i + ":20";
-                                break;
-                            case 30:
-                                boookingGroupTotal = 3;
-                                bookingGroupEnd = "" + i + ":30";
-                                break;
-                            case 40:
-                                boookingGroupTotal = 4;
-                                bookingGroupEnd = "" + i + ":40";
-                                break;
-                            case 50:
-                                boookingGroupTotal = 5;
-                                bookingGroupEnd = "" + i + ":50";
-                                break;
-                        }
-
-
-                    }
-
-                    boookingGroupBooked = 0;
-
-                    for (BookingGroup temp: bookingTemp) {
-                        if(i == Integer.parseInt(temp.getBookingGroupStart().substring(0,2))){
-                            boookingGroupBooked = temp.getBoookingGroupBooked();
-                        }
-                    }
-
-                    assert boookingGroupBooked <= boookingGroupTotal;
-
-                    log.info("bookingGroupStart:" + bookingGroupStart + ", bookingGroupEnd;" + bookingGroupEnd + ", bookingGroupEnd;" + bookingGroupDate + ", boookingGroupBooked:" + boookingGroupBooked + ", boookingGroupTotal" + boookingGroupTotal);
-
-                    bookingGroups.add(new BookingGroup(bookingGroupStart, bookingGroupEnd, bookingGroupDate, boookingGroupBooked, boookingGroupTotal));
-                }*/
                 return bookingGroups;
             }
         }, date, timeStart, timeEnd);

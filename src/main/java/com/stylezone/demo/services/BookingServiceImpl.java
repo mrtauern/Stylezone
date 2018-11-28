@@ -9,9 +9,16 @@ import com.stylezone.demo.repositories.BookingRepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
+
+import java.text.*;
+import java.time.*;
 
 @Service
 public class BookingServiceImpl implements BookingService {
@@ -221,4 +228,43 @@ public class BookingServiceImpl implements BookingService {
         List<Opening> openings = bookingRepo.getOpenings();
         return openings;
     }
+
+    @Override
+    public int getWeekToday() {
+        return Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
+    }
+
+    @Override
+    public String getDateToday() {
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+        String today = formatter.format(date);
+
+        return today;
+    }
+
+    @Override
+    public String[] getDatesOfWeek() {
+        String[] dates = new String[7];
+
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+
+        LocalDate monday = date;
+        while (monday.getDayOfWeek() != DayOfWeek.MONDAY) {
+            monday = monday.minusDays(1);
+        }
+
+        date = monday;
+        dates[0] = formatter.format(date);
+
+        for (int i = 1; i<7; i++){
+            date = date.plusDays(1);
+            dates[i] = formatter.format(date);
+        }
+
+        return dates;
+    }
+
+
 }

@@ -10,6 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -43,8 +47,19 @@ public class BookingController {
         log.info("booking called...");
 
         List<BookingGroup> bookingGroups = bookingService.getBookingGroups("12-12-2018", "10:00", "18:30");
-        model.addAttribute("monday", bookingGroups);
+        String[] dates = bookingService.getDatesOfWeek();
+        model.addAttribute("monday", dates[0]);
+        model.addAttribute("tuesday", dates[1]);
+        model.addAttribute("wednesday", dates[2]);
+        model.addAttribute("thursday", dates[3]);
+        model.addAttribute("friday", dates[4]);
+        model.addAttribute("saturday", dates[5]);
+        model.addAttribute("sunday", dates[6]);
+        model.addAttribute("weekNumber",bookingService.getWeekToday());
+        model.addAttribute("mondayBookings", bookingGroups);
         model.addAttribute("pageTitle", "Book tid");
+
+        log.info(bookingService.getDateToday());
 
         return BOOKING;
     }
