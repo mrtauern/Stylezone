@@ -24,6 +24,8 @@ public class BookingController {
     private final String REDIRECT = "redirect:/";
     private final String SAVEBOOKING = "saveBooking";
     private final String BOOKING = "booking";
+    private final String OMOS = "omOs";
+
 
     Logger log = Logger.getLogger(BookingController.class.getName());
 
@@ -60,7 +62,12 @@ public class BookingController {
 
     }
 
+    @GetMapping("/omOs")
+    public String omOs(Model model){
 
+        return OMOS;
+
+    }
 }
 
 
