@@ -9,24 +9,25 @@
 
     <h1>Book tid</h1>
 
-    <form class="form-inline">
+    <form class="form-inline" method="Post" th:action="@{/goToDate}" id="goToDate">
         <label>Gå tll dato: </label>
-        <input type="date" name="date" class="form-control">
+        <input type="date" th:name="date" class="form-control">
         <button type="submit" class="btn btn-primary">Gå</button>
+
+        <a href="/booking" class="btn btn-primary">Gå til idag</a>
     </form>
-    <br>
 
     <div id="bookingSelector">
         <div id="weekSelector">
             <ul>
                 <li class="prev"><a th:href="${'/booking/' + prevWeek}">&#10094;</a></li>
                 <li class="next"><a th:href="${'/booking/' + nextWeek}">&#10095;</a></li>
-                <li>Uge <span th:text="${weekNumber}"></span><br><span style="font-size:18px" th:text="${monday + ' - ' + sunday}"></span></li>
+                <li>Uge <span th:text="${weekNumber}"></span><br><span style="font-size:18px" th:text="${#strings.replace(monday, '-', '/') + ' - ' + #strings.replace(sunday, '-', '/')}"></span></li>
             </ul>
         </div>
 
         <ul id="bookingTimes">
-            <li>Mandag<br><span style="font-size:12px" th:text="${monday}"></span>
+            <li>Mandag<br><span style="font-size:12px" th:text="${#strings.replace(monday, '-', '/')}"></span>
                 <ul th:each="mondayBooking : ${mondayBookings}">
                     <li>
                         <span th:switch="${mondayBooking.bookingGroupFree}">
@@ -42,7 +43,7 @@
                     </li>
                 </ul>
             </li>
-            <li>Tirsdag<br><span style="font-size:12px" th:text="${tuesday}"></span>
+            <li>Tirsdag<br><span style="font-size:12px" th:text="${#strings.replace(tuesday, '-', '/')}"></span>
                 <ul th:each="tuesdayBooking : ${tuesdayBookings}">
                     <li>
                         <span th:switch="${tuesdayBooking.bookingGroupFree}">
@@ -58,7 +59,7 @@
                     </li>
                 </ul>
             </li>
-            <li>Onsdag<br><span style="font-size:12px" th:text="${wednesday}"></span>
+            <li>Onsdag<br><span style="font-size:12px" th:text="${#strings.replace(wednesday, '-', '/')}"></span>
                 <ul th:each="wednesdayBooking : ${wednesdayBookings}">
                     <li>
                         <span th:switch="${wednesdayBooking.bookingGroupFree}">
@@ -74,7 +75,7 @@
                     </li>
                 </ul>
             </li>
-            <li>Torsdag<br><span style="font-size:12px" th:text="${thursday}"></span>
+            <li>Torsdag<br><span style="font-size:12px" th:text="${#strings.replace(thursday, '-', '/')}"></span>
                 <ul th:each="thursdayBooking : ${thursdayBookings}">
                     <li>
                         <span th:switch="${thursdayBooking.bookingGroupFree}">
@@ -90,7 +91,7 @@
                     </li>
                 </ul>
             </li>
-            <li>Fredag<br><span style="font-size:12px" th:text="${friday}"></span>
+            <li>Fredag<br><span style="font-size:12px" th:text="${#strings.replace(friday, '-', '/')}"></span>
                 <ul th:each="fridayBooking : ${fridayBookings}">
                     <li>
                         <span th:switch="${fridayBooking.bookingGroupFree}">
@@ -106,7 +107,7 @@
                     </li>
                 </ul>
             </li>
-            <li>Lørdag<br><span style="font-size:12px" th:text="${saturday}"></span>
+            <li>Lørdag<br><span style="font-size:12px" th:text="${#strings.replace(saturday, '-', '/')}"></span>
                 <ul th:each="saturdayBooking : ${saturdayBookings}">
                     <li>
                         <span th:switch="${saturdayBooking.bookingGroupFree}">

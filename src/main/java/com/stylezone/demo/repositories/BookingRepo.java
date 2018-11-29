@@ -29,6 +29,6 @@ public interface BookingRepo {
 
     //Opening
     Opening findOpening(int openingId);
-    List<Opening> getOpenings();
+    Opening[] getOpenings();
 
 }

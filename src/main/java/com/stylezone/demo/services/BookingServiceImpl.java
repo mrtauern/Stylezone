@@ -60,11 +60,11 @@ public class BookingServiceImpl implements BookingService {
     }
 
     public List<Booking> getSelectedBookings(String date, String timeStart, String timeEnd) {
-        log.info("BookingService.getSelectedBookings("+date+", "+timeStart+", "+timeEnd+")");
+        //log.info("BookingService.getSelectedBookings("+date+", "+timeStart+", "+timeEnd+")");
 
         List<Booking> temp = bookingRepo.getSelectedBookings(date, timeStart, timeEnd);
 
-        log.info("temp length: "+temp.size());
+        //log.info("temp length: "+temp.size());
 
         int bookingId, bookingPhone, staffId;
         String bookingTime, bookingDate, bookingName, bookingComment;
@@ -198,9 +198,12 @@ public class BookingServiceImpl implements BookingService {
 
             assert boookingGroupBooked <= boookingGroupTotal;
 
-            log.info("bookingGroupStart:" + bookingGroupStart + ", bookingGroupEnd;" + bookingGroupEnd + ", bookingGroupEnd;" + bookingGroupDate + ", boookingGroupBooked:" + boookingGroupBooked + ", boookingGroupTotal" + boookingGroupTotal);
+            //log.info("bookingGroupStart:" + bookingGroupStart + ", bookingGroupEnd;" + bookingGroupEnd + ", bookingGroupEnd;" + bookingGroupDate + ", boookingGroupBooked:" + boookingGroupBooked + ", boookingGroupTotal" + boookingGroupTotal);
 
-            bookingGroups.add(new BookingGroup(bookingGroupStart, bookingGroupEnd, bookingGroupDate, boookingGroupBooked, boookingGroupTotal));
+            if (boookingGroupTotal > 0) {
+                bookingGroups.add(new BookingGroup(bookingGroupStart, bookingGroupEnd, bookingGroupDate, boookingGroupBooked, boookingGroupTotal));
+            }
+
         }
 
         return bookingGroups;
@@ -236,8 +239,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<Opening> getOpenings() {
-        List<Opening> openings = bookingRepo.getOpenings();
+    public Opening[] getOpenings() {
+        Opening[] openings = bookingRepo.getOpenings();
         return openings;
     }
 
@@ -331,7 +334,7 @@ public class BookingServiceImpl implements BookingService {
         date = date.plusDays(7);
         String next = formatter.format(date);
 
-        log.info(next);
+        log.info("Next week: "+next);
 
         return next;
     }
@@ -343,7 +346,7 @@ public class BookingServiceImpl implements BookingService {
         date = date.plusDays(7);
         String next = formatter.format(date);
 
-        log.info(next);
+        log.info("Next week: "+next);
 
         return next;
     }
@@ -355,7 +358,7 @@ public class BookingServiceImpl implements BookingService {
         date = date.minusDays(7);
         String prev = formatter.format(date);
 
-        log.info(prev);
+        log.info("Prev week: "+prev);
 
         return prev;
     }
@@ -367,7 +370,7 @@ public class BookingServiceImpl implements BookingService {
         date = date.minusDays(7);
         String prev = formatter.format(date);
 
-        log.info(prev);
+        log.info("Prev week: "+prev);
 
         return prev;
     }

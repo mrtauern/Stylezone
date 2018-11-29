@@ -30,7 +30,8 @@ public interface BookingService {
 
     //Opening
     Opening findOpening(int openingId);
-    List<Opening> getOpenings();
+    Opening[] getOpenings();
+
     //Mail
     void sendEmail(Booking booking);
 
