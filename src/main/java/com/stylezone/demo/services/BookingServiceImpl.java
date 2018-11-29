@@ -1,9 +1,6 @@
 package com.stylezone.demo.services;
 
-import com.stylezone.demo.models.Booking;
-import com.stylezone.demo.models.BookingGroup;
-import com.stylezone.demo.models.Holiday;
-import com.stylezone.demo.models.Opening;
+import com.stylezone.demo.models.*;
 import com.stylezone.demo.repositories.BookingRepo;
 import com.stylezone.demo.repositories.BookingRepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -330,5 +327,27 @@ public class BookingServiceImpl implements BookingService {
         return dates;
     }
 
+    @Override
+    public List<Staff> getStaff() {
+        List<Staff> staffs = bookingRepo.getStaff();
+        return staffs;
+    }
 
+    @Override
+    public Staff getStaffMember(int staffId) {
+        Staff staffs = bookingRepo.getStaffMember(staffId);
+        return staffs;
+    }
+
+    @Override
+    public Staff updateStaff(Staff staff){
+
+        staff = bookingRepo.updateStaff(staff);
+
+        return staff;
+    }
+    @Override
+    public void deleteStaffMember(int staffId){
+        bookingRepo.deleteStaffMember(staffId);
+    }
 }

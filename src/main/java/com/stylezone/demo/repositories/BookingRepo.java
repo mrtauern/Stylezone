@@ -1,9 +1,6 @@
 package com.stylezone.demo.repositories;
 
-import com.stylezone.demo.models.Booking;
-import com.stylezone.demo.models.BookingGroup;
-import com.stylezone.demo.models.Holiday;
-import com.stylezone.demo.models.Opening;
+import com.stylezone.demo.models.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -30,5 +27,11 @@ public interface BookingRepo {
     //Opening
     Opening findOpening(int openingId);
     List<Opening> getOpenings();
+
+    //Staff
+    List<Staff> getStaff();
+    Staff getStaffMember(int staffId);
+    Staff updateStaff(Staff staff);
+    void deleteStaffMember(int staffId);
 
 }

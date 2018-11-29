@@ -3,6 +3,7 @@ package com.stylezone.demo.controllers;
 import com.stylezone.demo.models.Booking;
 import com.stylezone.demo.models.ReCaptchaResponse;
 import com.stylezone.demo.models.BookingGroup;
+import com.stylezone.demo.models.Staff;
 import com.stylezone.demo.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -33,8 +34,9 @@ public class BookingController {
     private final String BILLEDEGALLERI = "billedeGalleri";
     private final String INDEX = "index";
     private final String OMOS = "omOs";
-
-
+    private final String REDIGEREPESONALE = "redigerePersonale";
+    private final String STAFF = "staff";
+    private final String DELETESTAFF = "deleteStaff";
     Logger log = Logger.getLogger(BookingController.class.getName());
 
     @GetMapping("/")
@@ -131,6 +133,72 @@ public class BookingController {
     public String omOs(Model model) {
 
         return OMOS;
+
+    }
+
+    @GetMapping("/redigerePersonale/{staffId}")
+    public String redigerPersonale(@PathVariable("staffId")int staffId, Model model){
+        log.info("redigerePersonale GetMapping called...");
+
+        Staff staff = bookingService.getStaffMember(staffId);
+
+        model.addAttribute("staff",staff );
+
+        return REDIGEREPESONALE;
+
+    }
+
+    @PutMapping("/redigerePersonale")
+    public String redigerePersonale(@ModelAttribute Staff staff, Model model){
+
+        bookingService.updateStaff(staff);
+        log.info("redigerePersonale called..." + staff.getStaffId());
+        model.addAttribute("", bookingService.getStaff());
+
+        return REDIRECT + STAFF;
+    }
+
+    @GetMapping("/staff")
+    public String staff(Model model){
+        log.info("staff called...");
+
+        List<Staff> staffs = bookingService.getStaff();
+        model.addAttribute("staffs", staffs);
+
+        return STAFF;
+
+    }
+    @PostMapping("/staff")
+    public String staff(@ModelAttribute Staff staff, Model model){
+        log.info("Staff called...");
+
+        model.addAttribute("staffs", bookingService.getStaff());
+
+        return STAFF;
+    }
+
+    @GetMapping("/deleteStaff/{id}")
+    public String deleteStaff(@PathVariable("staffId") int staffId, Model model){
+        log.info("deleteStaff with called with id :" + staffId );
+
+        model.addAttribute("staffs",bookingService.getStaffMember(staffId));
+        String staffName = bookingService.getStaffMember(staffId).getStaffName();
+        model.addAttribute("pageTitle", "Delete staff ("+ staffName + ")");
+
+        return DELETESTAFF;
+
+    }
+    @PutMapping("/deleteStaff")
+    public String deleteStaff(@ModelAttribute Staff staff, Model model){
+        log.info("delete confirmed deleting staffmember with Id" + staff.getStaffId());
+        int id = staff.getStaffId();
+
+        bookingService.deleteStaffMember(id);
+
+        model.addAttribute("staffs", bookingService.getStaff() );
+        model.addAttribute("pageTitle", "Delete staffMember" );
+
+        return REDIRECT;
 
     }
 }

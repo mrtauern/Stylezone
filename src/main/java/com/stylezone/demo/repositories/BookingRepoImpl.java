@@ -1,9 +1,6 @@
 package com.stylezone.demo.repositories;
 
-import com.stylezone.demo.models.Booking;
-import com.stylezone.demo.models.BookingGroup;
-import com.stylezone.demo.models.Holiday;
-import com.stylezone.demo.models.Opening;
+import com.stylezone.demo.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -231,6 +228,59 @@ public class BookingRepoImpl implements BookingRepo {
         return booking;
 
     }
-}
 
+    @Override
+    public List<Staff> getStaff(){
+
+            String sql = "SELECT * FROM Staff";
+            return this.template.query(sql, new ResultSetExtractor<List<Staff>>() {
+
+                @Override
+                public List<Staff> extractData(ResultSet rs) throws SQLException, DataAccessException{
+
+                int staffId;
+                String staffName;
+                ArrayList<Staff> staffs = new ArrayList<>();
+
+                while (rs.next()){
+
+                    staffId = rs.getInt("staffId");
+                    staffName = rs.getString("staffName");
+
+                    staffs.add(new Staff(staffId, staffName));
+
+                }
+                return staffs;
+            }
+
+        });
+    }
+    @Override
+    public Staff getStaffMember(int staffId){
+        String sql = "SELECT * FROM Staff WHERE staffId = ?";
+        RowMapper<Staff> rowMapper = new BeanPropertyRowMapper<>(Staff.class);
+
+        Staff staff = template.queryForObject(sql,rowMapper, staffId );
+
+        return staff;
+    }
+
+    @Override
+    public Staff updateStaff(Staff staff){
+
+        String sql = "UPDATE Staff SET staffName =? WHERE staffId = ?";
+        String staffName = staff.getStaffName();
+
+        int staffId = staff.getStaffId();
+        this.template.update(sql, staffName, staffId);
+
+        return staff;
+
+    }
+    @Override
+    public void deleteStaffMember(int staffId){
+        String sql = "DELETE FROM staff WHERE staffId = ?";
+        this.template.update(sql, staffId );
+    }
+}
 
