@@ -13,16 +13,14 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Logger;
 
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 @Service
 public class BookingServiceImpl implements BookingService {
@@ -295,7 +293,26 @@ public class BookingServiceImpl implements BookingService {
         }
     }
     public int getWeekToday() {
-        return Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar calendar = new GregorianCalendar();
+        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+
+        log.info(""+sdf.format(calendar.getTime()));
+        return weekOfYear;
+    }
+
+    @Override
+    public int getWeekFromDate(int day, int month, int year) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar calendar = new GregorianCalendar();
+        calendar.set(Calendar.YEAR, year);
+        month = month - 1;
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+
+        log.info(""+sdf.format(calendar.getTime()));
+        return weekOfYear;
     }
 
     @Override
@@ -305,6 +322,54 @@ public class BookingServiceImpl implements BookingService {
         String today = formatter.format(date);
 
         return today;
+    }
+
+    @Override
+    public String nextWeek() {
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+        date = date.plusDays(7);
+        String next = formatter.format(date);
+
+        log.info(next);
+
+        return next;
+    }
+
+    @Override
+    public String nextWeekFromDate(int day, int month, int year) {
+        LocalDate date = LocalDate.of(year, month, day);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+        date = date.plusDays(7);
+        String next = formatter.format(date);
+
+        log.info(next);
+
+        return next;
+    }
+
+    @Override
+    public String prevWeek() {
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+        date = date.minusDays(7);
+        String prev = formatter.format(date);
+
+        log.info(prev);
+
+        return prev;
+    }
+
+    @Override
+    public String prevWeekFromDate(int day, int month, int year) {
+        LocalDate date = LocalDate.of(year, month, day);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+        date = date.minusDays(7);
+        String prev = formatter.format(date);
+
+        log.info(prev);
+
+        return prev;
     }
 
     @Override
@@ -330,5 +395,31 @@ public class BookingServiceImpl implements BookingService {
         return dates;
     }
 
+    @Override
+    public String[] getDatesOfSelectedWeek(int day, int month, int year) {
+        String[] dates = new String[7];
+
+        log.info("Day: " + day + " Month: " + month + " Year: " + year);
+
+        LocalDate date = LocalDate.of(year, month, day);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+
+        log.info(formatter.format(date));
+
+        LocalDate monday = date;
+        while (monday.getDayOfWeek() != DayOfWeek.MONDAY) {
+            monday = monday.minusDays(1);
+        }
+
+        date = monday;
+        dates[0] = formatter.format(date);
+
+        for (int i = 1; i<7; i++){
+            date = date.plusDays(1);
+            dates[i] = formatter.format(date);
+        }
+
+        return dates;
+    }
 
 }
