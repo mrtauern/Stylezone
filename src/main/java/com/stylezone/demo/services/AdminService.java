@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 @Service
 public interface AdminService {
     //Admin
-    Admin hashPassword(Admin admin);
+    int hashPassword(String password);
+    Admin checkPassword(Admin admin);
+    Admin searchUser(Admin admin);
 
 }

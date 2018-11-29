@@ -16,12 +16,27 @@ public class AdminServiceImpl implements AdminService {
     Logger log = Logger.getLogger(AdminServiceImpl.class.getName());
 
     @Override
-    public Admin hashPassword(Admin admin) {
-        String passwordHash = admin.getAdminPassword();
+    public int hashPassword(String password) {
+        int passwordHash = password.hashCode();
 
-        admin.setAdminPassword(""+passwordHash.hashCode());
-        log.info( "passwordHash: "+passwordHash.hashCode()+" admin password hashed: "+admin.getAdminPassword());
+        log.info(""+passwordHash);
 
-        return admin;
+        return passwordHash;
+    }
+
+    @Override
+    public Admin checkPassword(Admin admin) {
+
+        Admin adminFound = adminRepo.checkPassword(admin);
+
+        return adminFound;
+    }
+
+    @Override
+    public Admin searchUser(Admin admin) {
+
+        Admin adminFound = adminRepo.searchUser(admin);
+
+        return adminFound;
     }
 }

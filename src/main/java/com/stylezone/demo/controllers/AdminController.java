@@ -22,6 +22,8 @@ public class AdminController {
     AdminService adminService;
 
     private final String ADMINLOGIN = "adminLogin";
+    private final String SUCCESS = "success";
+    private final String REDIRECT = "redirect:/";
 
     Logger log = Logger.getLogger(AdminController.class.getName());
 
@@ -34,14 +36,27 @@ public class AdminController {
         return ADMINLOGIN;
     }
 
-    @PostMapping
+    @PostMapping("/adminLogin")
     public String adminLogin(@ModelAttribute Admin admin) {
         log.info("adminLogin PostMapping called...");
 
-        adminService.hashPassword(admin);
-        log.info("admin password hash: "+admin.getAdminPassword());
+        int adminPW = adminService.hashPassword(admin.getAdminPassword());
 
-        return ADMINLOGIN;
+        admin.setAdminPassword(""+adminPW);
+        Admin adminCheck = adminService.searchUser(admin);
+
+        if(adminCheck.getAdminPassword().equals(admin.getAdminPassword()) && adminCheck.getAdminUsername().equals(admin.getAdminUsername())) {
+            log.info("Login is a success");
+            return REDIRECT+SUCCESS;
+        }
+
+        log.info("Login failed.");
+        return REDIRECT;
+    }
+
+    @GetMapping("/success")
+    public String success() {
+        return SUCCESS;
     }
 
 
