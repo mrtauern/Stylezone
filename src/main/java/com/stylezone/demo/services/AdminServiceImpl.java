@@ -24,13 +24,13 @@ public class AdminServiceImpl implements AdminService {
         return passwordHash;
     }
 
-    @Override
+    /*@Override
     public Admin checkPassword(Admin admin) {
 
         Admin adminFound = adminRepo.checkPassword(admin);
 
         return adminFound;
-    }
+    }*/
 
     @Override
     public Admin searchUser(Admin admin) {

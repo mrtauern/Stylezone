@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.logging.Logger;
 
 @Controller
@@ -37,7 +38,7 @@ public class AdminController {
     }
 
     @PostMapping("/adminLogin")
-    public String adminLogin(@ModelAttribute Admin admin) {
+    public String adminLogin(@ModelAttribute Admin admin, HttpSession session) {
         log.info("adminLogin PostMapping called...");
 
         int adminPW = adminService.hashPassword(admin.getAdminPassword());
@@ -47,6 +48,7 @@ public class AdminController {
 
         if(adminCheck.getAdminPassword().equals(admin.getAdminPassword()) && adminCheck.getAdminUsername().equals(admin.getAdminUsername())) {
             log.info("Login is a success");
+            session.setAttribute("loggedin", adminCheck);
             return REDIRECT+SUCCESS;
         }
 
@@ -55,8 +57,12 @@ public class AdminController {
     }
 
     @GetMapping("/success")
-    public String success() {
-        return SUCCESS;
+    public String success(HttpSession session, Model model) {
+        log.info("test"+session.getAttribute("loggedin"));
+        model.addAttribute("adminCheck", session.getAttribute("loggedin"));
+
+
+        return "omOs";
     }
 
 

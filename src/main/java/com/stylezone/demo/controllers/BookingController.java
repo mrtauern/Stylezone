@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -128,7 +129,7 @@ public class BookingController {
     }
 
     @GetMapping("/omOs")
-    public String omOs(Model model) {
+    public String omOs() {
 
         return OMOS;
 
