@@ -37,6 +37,8 @@ public class BookingController {
     private final String REDIGEREPESONALE = "redigerePersonale";
     private final String STAFF = "staff";
     private final String DELETESTAFF = "deleteStaff";
+    private final String CREATESTAFFMEMBER = "createStaffMember";
+
     Logger log = Logger.getLogger(BookingController.class.getName());
 
     @GetMapping("/")
@@ -97,8 +99,10 @@ public class BookingController {
 
         log.info("saveBooking getmapping called...");
 
-        model.addAttribute("booking", new Booking());
+        List<Staff> staffs = bookingService.getStaff();
 
+        model.addAttribute("staffs", staffs);
+        model.addAttribute("booking", new Booking());
         model.addAttribute("time", bookingTime);
         model.addAttribute("date", bookingDate);
 
@@ -177,11 +181,11 @@ public class BookingController {
         return STAFF;
     }
 
-    @GetMapping("/deleteStaff/{id}")
+    @GetMapping("/deleteStaff/{staffId}")
     public String deleteStaff(@PathVariable("staffId") int staffId, Model model){
         log.info("deleteStaff with called with id :" + staffId );
 
-        model.addAttribute("staffs",bookingService.getStaffMember(staffId));
+        model.addAttribute("staff",bookingService.getStaffMember(staffId));
         String staffName = bookingService.getStaffMember(staffId).getStaffName();
         model.addAttribute("pageTitle", "Delete staff ("+ staffName + ")");
 
@@ -201,6 +205,31 @@ public class BookingController {
         return REDIRECT;
 
     }
+
+    @GetMapping("/createStaffMember")
+    public String createStaffMember(Model model){
+        log.info("CreateStaffMember alled..");
+
+            model.addAttribute("staff", new Staff());
+            model.addAttribute("pageTitle", "Create new Staff Member");
+
+            return CREATESTAFFMEMBER;
+    }
+
+    @PostMapping("/createStaffMember")
+    public String createStaffMember(@ModelAttribute Staff staff, Model model){
+        log.info("createStaffMember postmapping called..");
+
+        bookingService.createStaffMember(staff);
+
+        model.addAttribute("staff", bookingService.getStaff());
+        model.addAttribute("pageTitle", "Create staff" );
+
+        return REDIRECT;
+
+    }
 }
+
+
 
 

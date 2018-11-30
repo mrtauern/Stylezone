@@ -279,8 +279,21 @@ public class BookingRepoImpl implements BookingRepo {
     }
     @Override
     public void deleteStaffMember(int staffId){
-        String sql = "DELETE FROM staff WHERE staffId = ?";
+        String sql = "DELETE FROM stylezone.Staff WHERE staffId = ?";
         this.template.update(sql, staffId );
+    }
+
+    public Staff createStaffMember(Staff staff){
+        String sql = "INSERT INTO Staff VALUE(default, ?)";
+
+        String staffName = staff.getStaffName();
+
+        log.info("createStaffMember called" + staffName);
+        this.template.update(sql, staffName);
+
+        return staff;
+
+
     }
 }
 

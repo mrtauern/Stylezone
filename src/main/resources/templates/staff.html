@@ -25,6 +25,9 @@
                 <td>
                     <a th:href="${'/redigerePersonale/'+ staff.staffId}" class ="btn btn-light btn-sm">
                         <span class="fas fa-pen"></span> Edit</a>
+                    <a th:href="${'deleteStaff/' + staff.staffId}" class="btn btn-danger btn-sm">
+                        <span class="fas fa-trash-alt"></span> Delete
+                    </a>
 
                 </td>
             </tr>
@@ -32,6 +35,9 @@
         </tbody>
     </table>
 
+    <a href="/createStaffMember" class="btn btn-success">
+        <span class="fas fa-plus"></span> Create new Staff Member
+    </a>
 
 </div>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>

@@ -350,4 +350,12 @@ public class BookingServiceImpl implements BookingService {
     public void deleteStaffMember(int staffId){
         bookingRepo.deleteStaffMember(staffId);
     }
+
+    @Override
+    public Staff createStaffMember(Staff staff){
+        staff = bookingRepo.createStaffMember(staff);
+
+        return staff;
+
+    }
 }

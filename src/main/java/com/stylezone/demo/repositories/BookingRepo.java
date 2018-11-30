@@ -33,5 +33,6 @@ public interface BookingRepo {
     Staff getStaffMember(int staffId);
     Staff updateStaff(Staff staff);
     void deleteStaffMember(int staffId);
+    Staff createStaffMember(Staff staff);
 
 }
