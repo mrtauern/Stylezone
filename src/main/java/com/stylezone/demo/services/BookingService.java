@@ -1,9 +1,6 @@
 package com.stylezone.demo.services;
 
-import com.stylezone.demo.models.Booking;
-import com.stylezone.demo.models.BookingGroup;
-import com.stylezone.demo.models.Holiday;
-import com.stylezone.demo.models.Opening;
+import com.stylezone.demo.models.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -38,4 +35,11 @@ public interface BookingService {
     public int getWeekToday();
     public String getDateToday();
     public String[] getDatesOfWeek();
+
+    //Offers
+    List<Offer> getOffers();
+    Offer createOffer(Offer offer);
+    Offer updateOffer(Offer offer);
+    void deleteOffer(int id);
+    Offer findOffer(int id);
 }

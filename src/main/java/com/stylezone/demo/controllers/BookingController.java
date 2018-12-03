@@ -1,6 +1,7 @@
 package com.stylezone.demo.controllers;
 
 import com.stylezone.demo.models.Booking;
+import com.stylezone.demo.models.Offer;
 import com.stylezone.demo.models.ReCaptchaResponse;
 import com.stylezone.demo.models.BookingGroup;
 import com.stylezone.demo.services.BookingService;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 
 @Controller
 public class BookingController {
+
 
     public BookingController() {
     }
@@ -33,6 +35,10 @@ public class BookingController {
     private final String BILLEDEGALLERI = "billedeGalleri";
     private final String INDEX = "index";
     private final String OMOS = "omOs";
+    private final String OFFER = "offer";
+    private final String CREATEOFFER = "createOffer";
+
+
 
 
     Logger log = Logger.getLogger(BookingController.class.getName());
@@ -86,7 +92,6 @@ public class BookingController {
         log.info("billedeGalleri called...");
 
         return BILLEDEGALLERI;
-
     }
 
 
@@ -131,8 +136,61 @@ public class BookingController {
     public String omOs(Model model) {
 
         return OMOS;
-
     }
+
+
+
+    @GetMapping("/offer")
+    public String offer(Model model) {
+        log.info("Index called...");
+
+        List<Offer> offers = bookingService.getOffers();
+        model.addAttribute("offers", offers);
+        model.addAttribute("pageTitle", "offer");
+
+        return OFFER;
+    }
+
+
+
+        /*
+
+    @GetMapping("/offer")
+    public String offer() {
+        log.info("offer siden called...");
+
+        return OFFER;
+    }
+    /*@GetMapping("/opretTilbud")
+      public String opretTilbud() {
+          log.info("opretTilbud siden called...");
+
+          return OPRETTILBUD;
+      }  */
+
+    @GetMapping("/createOffer")
+    public String createOffer(Model model) {
+        log.info("createOffer getmapping is been called...");
+
+        model.addAttribute("offer", new Offer());
+        model.addAttribute("pageTitle", "Create offer");
+
+        return CREATEOFFER;
+    }
+
+    @PostMapping("/createOffer")
+    public String createOffer(@ModelAttribute Offer offer, Model model){
+        log.info("create Offer postmapping is called");
+
+        log.info("offerName: " + offer.getOfferName() + " offerContent: " + offer.getOfferContent() + " offerStart: " + offer.getOfferStart() + " offerEnd: " + offer.getOfferEnd());
+
+        bookingService.createOffer(offer);
+        model.addAttribute("Offers", bookingService.getOffers());
+        model.addAttribute("pageTitle", "Create offer");
+
+        return REDIRECT;
+    }
+
 }
 
 
