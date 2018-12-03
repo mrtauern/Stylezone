@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/stylezone.iml" filepath="$PROJECT_DIR$/stylezone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StyleZone.iml" filepath="$PROJECT_DIR$/StyleZone.iml" />
     </modules>
   </component>
 </project>
