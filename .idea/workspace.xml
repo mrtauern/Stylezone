@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a638ced-e87c-463d-9dfb-df11f8960873" name="Default Changelist" comment="" />
+    <list default="true" id="0be20ae4-85cf-49e1-9455-e413b07c6355" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,21 +85,25 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/controllers/BookingController.java">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/services/BookingService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="661">
-              <caret line="97" column="42" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
+            <state relative-caret-position="615">
+              <caret line="46" column="27" lean-forward="true" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/services/BookingServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="307" column="62" lean-forward="true" selection-start-line="307" selection-start-column="62" selection-end-line="307" selection-end-column="62" />
+            <state relative-caret-position="5640">
+              <caret line="397" column="13" selection-start-line="397" selection-start-column="13" selection-end-line="397" selection-end-column="13" />
+              <folding>
+                <element signature="e#15008#15009#0" expanded="true" />
+                <element signature="e#15062#15063#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -139,8 +145,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/stylezone/demo/models/Booking.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/head.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/stylezone/demo/repositories/BookingRepo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/stylezone/demo/services/BookingService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/stylezone/demo/services/BookingServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/stylezone/demo/models/Opening.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/stylezone/demo/repositories/BookingRepoImpl.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ea705634-37a2-47c7-9f0c-2e04a2416a0d/console.sql" />
@@ -151,6 +155,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/style/style.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/stylezone/demo/controllers/BookingController.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/src/main/java/com/stylezone/demo/services/BookingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/stylezone/demo/services/BookingServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -176,35 +182,40 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="stylezone" type="462c0819:PsiDirectoryNode" />
+              <item name=".mvn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -212,7 +223,7 @@
               <item name="demo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -221,7 +232,7 @@
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -230,7 +241,7 @@
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -239,7 +250,7 @@
               <item name="repositories" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -248,14 +259,14 @@
               <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -263,7 +274,7 @@
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -272,7 +283,7 @@
               <item name="image" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -281,27 +292,12 @@
               <item name="style" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StyleZone" type="b2602c69:ProjectViewProjectNode" />
               <item name="stylezone" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stylezone" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stylezone" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stylezone" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -318,7 +314,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543830785311" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543831991451" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -409,13 +405,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89130000" />
+    <option name="totallyTimeSpent" value="90414000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1131" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1629393" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18690096" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -425,13 +420,13 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22040424" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.22040424" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32981783" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.21462946" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.21462946" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
@@ -445,7 +440,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Maven Projects" order="5" weight="0.32960597" />
-      <window_info active="true" anchor="right" id="Database" order="6" visible="true" weight="0.1485623" />
+      <window_info anchor="right" id="Database" order="6" visible="true" weight="0.1485623" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" />
@@ -470,7 +465,6 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/820c8c48-e4f9-4b53-9b5b-8ae0a9c68ab9/console.sql" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/models/BookingGroup.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.properties" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/models/Booking.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/head.html" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/repositories/BookingRepo.java" />
@@ -483,24 +477,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/booking.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/services/BookingService.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/models/Opening.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/timeSelect.html" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/style/style.css" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/repositories/BookingRepoImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/saveBooking.html" />
     <entry file="das://ea705634-37a2-47c7-9f0c-2e04a2416a0d/schema/stylezone/table/Offer">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/DemoApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -525,10 +510,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/DemoApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/saveBooking.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/services/BookingServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="307" column="62" lean-forward="true" selection-start-line="307" selection-start-column="62" selection-end-line="307" selection-end-column="62" />
+        <state relative-caret-position="5640">
+          <caret line="397" column="13" selection-start-line="397" selection-start-column="13" selection-end-line="397" selection-end-column="13" />
+          <folding>
+            <element signature="e#15008#15009#0" expanded="true" />
+            <element signature="e#15062#15063#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stylezone/demo/services/BookingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="46" column="27" lean-forward="true" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
         </state>
       </provider>
     </entry>
