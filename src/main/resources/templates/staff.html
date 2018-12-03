@@ -23,7 +23,7 @@
                 <td th:text="${staff.staffName}"></td>
 
                 <td>
-                    <a th:href="${'/redigerePersonale/'+ staff.staffId}" class ="btn btn-light btn-sm">
+                    <a th:href="${'/editStaff/'+ staff.staffId}" class ="btn btn-light btn-sm">
                         <span class="fas fa-pen"></span> Edit</a>
                     <a th:href="${'deleteStaff/' + staff.staffId}" class="btn btn-danger btn-sm">
                         <span class="fas fa-trash-alt"></span> Delete

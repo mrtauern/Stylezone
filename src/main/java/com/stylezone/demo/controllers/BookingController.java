@@ -33,8 +33,8 @@ public class BookingController {
     private final String TIMESELECT = "timeSelect";
     private final String BILLEDEGALLERI = "billedeGalleri";
     private final String INDEX = "index";
-    private final String OMOS = "omOs";
-    private final String REDIGEREPESONALE = "redigerePersonale";
+    private final String ABOUTUS = "aboutUs";
+    private final String EDITSTAFF = "editStaff";
     private final String STAFF = "staff";
     private final String DELETESTAFF = "deleteStaff";
     private final String CREATESTAFFMEMBER = "createStaffMember";
@@ -133,30 +133,30 @@ public class BookingController {
 
     }
 
-    @GetMapping("/omOs")
-    public String omOs(Model model) {
+    @GetMapping("/aboutUs")
+    public String aboutUs(Model model) {
 
-        return OMOS;
+        return ABOUTUS;
 
     }
 
-    @GetMapping("/redigerePersonale/{staffId}")
-    public String redigerPersonale(@PathVariable("staffId")int staffId, Model model){
-        log.info("redigerePersonale GetMapping called...");
+    @GetMapping("/editStaff/{staffId}")
+    public String editStaff(@PathVariable("staffId")int staffId, Model model){
+        log.info("editStaff GetMapping called...");
 
         Staff staff = bookingService.getStaffMember(staffId);
 
         model.addAttribute("staff",staff );
 
-        return REDIGEREPESONALE;
+        return EDITSTAFF;
 
     }
 
-    @PutMapping("/redigerePersonale")
-    public String redigerePersonale(@ModelAttribute Staff staff, Model model){
+    @PutMapping("/editStaff")
+    public String editStaff(@ModelAttribute Staff staff, Model model){
 
         bookingService.updateStaff(staff);
-        log.info("redigerePersonale called..." + staff.getStaffId());
+        log.info("editStaff called..." + staff.getStaffId());
         model.addAttribute("", bookingService.getStaff());
 
         return REDIRECT + STAFF;
@@ -202,7 +202,7 @@ public class BookingController {
         model.addAttribute("staffs", bookingService.getStaff() );
         model.addAttribute("pageTitle", "Delete staffMember" );
 
-        return REDIRECT;
+        return REDIRECT + STAFF;
 
     }
 
@@ -225,7 +225,7 @@ public class BookingController {
         model.addAttribute("staff", bookingService.getStaff());
         model.addAttribute("pageTitle", "Create staff" );
 
-        return REDIRECT;
+        return REDIRECT + STAFF;
 
     }
 }
